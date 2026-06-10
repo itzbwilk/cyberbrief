@@ -7,15 +7,6 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-import os
-from openai import OpenAI
-from notion_client import Client
-from datetime import date
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
-
 # Initialize clients
 openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 notion = Client(auth=os.getenv("NOTION_TOKEN"))
