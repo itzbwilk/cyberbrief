@@ -31,7 +31,7 @@ A Python automation project that fetches current events in cybersecurity every m
 - feedparser (RSS feed parsing for verified article data)
 - Notion API
 - Windows Task Scheduler
-- python-dotnev for secret management
+- python-dotenv for secret management
 
 ## Skills Demonstrated
 - REST API integration and authentication
@@ -42,10 +42,10 @@ A Python automation project that fetches current events in cybersecurity every m
 ## Setup
 1. Clone the repo
 2. Create a virtual environment and install dependencies:
-   pip install openai notion-client python-dotnev
-3. Create a .env file with your credentials (see .env example)
-4. Connect your Notion integration to your target page
-5. Schedule cyberbrief.py with Windows Task Scheduler
+   pip install openai notion-client python-dotenv feedparser
+4. Create a .env file with your credentials (see .env example)
+5. Connect your Notion integration to your target page
+6. Schedule cyberbrief.py with Windows Task Scheduler
 
 ## Environment Variables
 Create a .env file in project root:
