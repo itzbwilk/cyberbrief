@@ -7,9 +7,28 @@ A Python automation project that fetches current events in cybersecurity every m
 - Generates a structured CyberBrief with severity rating, takeaways and source URLs
 - Automatically updates a Notion page with the daily brief
 
+## Key Lessons Learned
+
+- The OpenAI web search tool can find real article titles and summaries reliably, 
+  but does not consistently return accurate deep-link URLs and it sometimes 
+  fabricates plausible-looking links or returns generic homepage URLs instead.
+- Fixed by restructuring the pipeline: Python fetches real articles directly from 
+  each source's RSS feed (BleepingComputer, The Hacker News, SecurityWeek) using 
+  `feedparser`, guaranteeing accurate titles, sources, and URLs with zero AI 
+  involvement in the citation itself. GPT is only used to write analysis on top 
+  of this verified data, never to generate or recall a link.
+- RSS feeds for BleepingComputer and SecurityWeek block requests without a 
+  proper browser User-Agent header. This required spoofing a Chrome user agent to 
+  fetch successfully.
+- General principle: when an AI tool is asked to both retrieve information and 
+  format/cite it precisely, it can prioritize satisfying the format over factual 
+  accuracy. Separating data retrieval (code) from analysis (AI) produces more 
+  reliable, trustworthy automation.
+
 ## Tech Stack
 - Python 3.14
-- OpenAI API (GPT-4o-mini with web search)
+- OpenAI API (GPT-4o-mini, used for analysis/writing)
+- feedparser (RSS feed parsing for verified article data)
 - Notion API
 - Windows Task Scheduler
 - python-dotnev for secret management
